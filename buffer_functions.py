@@ -1,3 +1,4 @@
+import builtins
 from buffer import Buffer
 
 
@@ -11,6 +12,7 @@ def insert(buffer: Buffer, text: str):
         insert_pos = buffer.current_line_index + 1
         buffer.lines[insert_pos:insert_pos] = lines
         buffer.current_line_index += len(lines)
+
 
 # Reads a given textfile and inserts text at the end calling insert()
 def read(buffer: Buffer, filename: str):
@@ -27,7 +29,7 @@ def read(buffer: Buffer, filename: str):
         insert(buffer, file_contents)
 
 
-# Writes whats in the buffer to a given textfile 
+# Writes whats in the buffer to a given textfile
 def write(buffer: Buffer, filename: str):
     if filename is None:
         if buffer.current_file is None:
@@ -42,6 +44,6 @@ def write(buffer: Buffer, filename: str):
 
 
 # Prints whats in the buffer
-def print(buffer):
+def print(buffer: Buffer):
     for line in buffer.lines:
-        print(line)
+        builtins.print(line)

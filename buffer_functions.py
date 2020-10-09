@@ -43,6 +43,13 @@ def write(buffer: Buffer, filename: str):
         f.write("\n".join(buffer.lines))
 
 
+def current_line(buffer: Buffer, integer: int):
+    if integer >= len(buffer.lines):
+        raise Exception("Line number out range")
+    else:
+        buffer.current_line_index = integer
+
+
 # Prints whats in the buffer
 def print(buffer: Buffer):
     for line in buffer.lines:

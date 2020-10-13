@@ -1,5 +1,7 @@
 import builtins
+from typing import Optional
 from buffer import Buffer
+from deepline_error import DeeplineError
 
 
 # Inserts text at next line of whatever buffer index is pointing at
@@ -15,10 +17,10 @@ def insert(buffer: Buffer, text: str):
 
 
 # Reads a given textfile and inserts text at the end calling insert()
-def read(buffer: Buffer, filename: str):
+def read(buffer: Buffer, filename: Optional[str]):
     if filename is None:
         if buffer.current_file is None:
-            raise Exception("No filename provided")
+            raise DeeplineError("No filename provided")
         else:
             filename = buffer.current_file
     else:
@@ -30,10 +32,10 @@ def read(buffer: Buffer, filename: str):
 
 
 # Writes whats in the buffer to a given textfile
-def write(buffer: Buffer, filename: str):
+def write(buffer: Buffer, filename: Optional[str]):
     if filename is None:
         if buffer.current_file is None:
-            raise Exception("No filename provided")
+            raise DeeplineError("No filename provided")
         else:
             filename = buffer.current_file
     else:
@@ -45,7 +47,7 @@ def write(buffer: Buffer, filename: str):
 
 def current_line(buffer: Buffer, integer: int):
     if integer >= len(buffer.lines):
-        raise Exception("Line number out range")
+        raise DeeplineError("Line number out range")
     else:
         buffer.current_line_index = integer
 

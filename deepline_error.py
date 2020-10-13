@@ -1,0 +1,2 @@
+class DeeplineError(Exception):
+    pass

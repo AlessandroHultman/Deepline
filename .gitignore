@@ -133,3 +133,5 @@ dmypy.json
 
 # VScode stuff
 .vscode/
+
+Pipfile.lock

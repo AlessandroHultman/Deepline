@@ -78,4 +78,4 @@ def insert(buffer: Buffer, text: str):
 
 # Quits Deepline
 def quit(buffer: Buffer):
-    raise EOFError
+    exit()

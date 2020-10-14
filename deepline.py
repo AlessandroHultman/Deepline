@@ -7,7 +7,11 @@ from deepline_error import DeeplineError
 import buffer_functions
 
 PROMPT = "dl> "
-WELCOME_MESSAGE = "Welcome to deepline!"
+WELCOME_MESSAGE = """Welcome to deepline
+
+Type `h` to get more help.
+"""
+
 COMMANDS: Dict[str, Callable[[Buffer, List[str]],
                              None]] = create_command_list({
                                  "i":

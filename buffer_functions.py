@@ -54,8 +54,8 @@ def current_line(buffer: Buffer, integer: int):
 
 # Prints whats in the buffer
 def print(buffer: Buffer):
-    for line in buffer.lines:
-        builtins.print(line)
+    for index, line in enumerate(buffer.lines, start = buffer.first_line_number):
+        builtins.print(f"{index}. {line}")
 
 
 # Delets everything in the buffer

@@ -8,6 +8,7 @@ class Buffer:
         self.current_file: Optional[str] = None
         self.history: list(Buffer) = []
         self.undone: list(Buffer) = []
+        self.first_line_number = 1
 
     def current_line(self) -> Optional[str]:
         if self.current_line_index is not None:

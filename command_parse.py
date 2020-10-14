@@ -12,9 +12,18 @@ ALLOWED_ARG_TYPES: Set = {str, int, float}
 
 
 def create_command_list(
-    functions: Dict[str, Callable]
+    commands: Dict[str, Callable]
 ) -> Dict[str, Callable[[Buffer, List[str]], None]]:
-    return {name: create_command(f) for (name, f) in functions.items()}
+    def help(_: Buffer):
+        "Print help message for all commands."
+        print("Availlable commands:\n")
+        for name, function in commands.items():
+            print(f"{name}, {function.__name__}", ",  " + function.__doc__ if function.__doc__ is not None else "", sep="")
+
+    assert "h" not in commands, "The command name 'h' is reserved for the help command."
+    commands["h"] = help
+
+    return {name: create_command(f) for (name, f) in commands.items()}
 
 
 def create_command(function: Callable[..., None]):

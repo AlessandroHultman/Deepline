@@ -105,6 +105,7 @@ def parse_and_run(commands: Dict[str, Callable[[Buffer, List[str]], None]],
         range_buffer = Buffer()
         range_buffer.lines = buffer.lines[start:end].copy()
         range_buffer.current_line_index = len(range_buffer.lines) - 1
+        range_buffer.first_line_number += start
         # If no text was supplied after the range, only print and move current line to the last line in the range.
         if text.strip() == "":
             buffer_functions.print(range_buffer)

@@ -4,8 +4,8 @@ from buffer import Buffer
 from deepline_error import DeeplineError
 
 
-# Inserts text at next line of whatever buffer index is pointing at
-def insert(buffer: Buffer, text: str):
+# Appends text at next line of whatever buffer current line is pointing at
+def append(buffer: Buffer, text: str):
     lines = text.split("\n")
     if buffer.current_line_index is None:
         buffer.current_line_index = len(lines) - 1
@@ -56,3 +56,26 @@ def current_line(buffer: Buffer, integer: int):
 def print(buffer: Buffer):
     for line in buffer.lines:
         builtins.print(line)
+
+
+# Delets everything in the buffer
+def delete(buffer: Buffer):
+    buffer.lines = []
+    buffer.current_line_index = None
+
+
+# Inserts text
+def insert(buffer: Buffer, text: str):
+    lines = text.split("\n")
+    if buffer.current_line_index is None:
+        buffer.current_line_index = len(lines) - 1
+        buffer.lines = lines
+    else:
+        insert_pos = buffer.current_line_index
+        buffer.lines[insert_pos:insert_pos] = lines
+        buffer.current_line_index += len(lines)
+
+
+# Quits Deepline
+def quit(buffer: Buffer):
+    raise EOFError

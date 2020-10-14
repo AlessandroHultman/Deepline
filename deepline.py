@@ -12,12 +12,16 @@ COMMANDS: Dict[str, Callable[[Buffer, List[str]],
                              None]] = create_command_list({
                                  "i":
                                  buffer_functions.insert,
+                                 "a":
+                                 buffer_functions.append,
                                  "p":
                                  buffer_functions.print,
                                  "r":
                                  buffer_functions.read,
                                  "w":
                                  buffer_functions.write,
+                                 "q":
+                                 buffer_functions.quit,
                              })
 
 
